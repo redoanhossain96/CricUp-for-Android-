@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "798919032376",
+    "firebase_url": "https://something-new-redoan-default-rtdb.firebaseio.com",
+    "project_id": "something-new-redoan",
+    "storage_bucket": "something-new-redoan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798919032376:android:e0b632ceb145064b4cb0cd",
+        "android_client_info": {
+          "package_name": "com.somethingnewredoan.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798919032376-puckq6ab07dpo2r4l7rg8uradvbvcaq1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.somethingnewredoan.app",
+            "certificate_hash": "491772f86276a6344a031abae9c2f2cc4936ad06"
+          }
+        },
+        {
+          "client_id": "798919032376-uuss7lfop8k8chl5rh4kdao5ou16uus3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf7oFhL4mJaLs7-dqDoZD0cllkEWHx4RU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798919032376-uuss7lfop8k8chl5rh4kdao5ou16uus3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

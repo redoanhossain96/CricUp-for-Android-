@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Match": {
+      "collection": "matches",
+      "fields": {
+        "id": { "type": "string" },
+        "matchCode": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "format": { "type": "string" },
+        "totalOvers": { "type": "number" },
+        "venue": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "status": { "type": "string" },
+        "lastSyncTimestamp": { "type": "number" }
+      }
+    },
+    "BallEvent": {
+      "collection": "matches/{matchId}/ballEvents",
+      "fields": {
+        "id": { "type": "string" },
+        "matchId": { "type": "string" },
+        "inningsNumber": { "type": "number" },
+        "ballSeq": { "type": "number" },
+        "overNumber": { "type": "number" },
+        "ballInOver": { "type": "number" },
+        "strikerId": { "type": "string" },
+        "strikerName": { "type": "string" },
+        "bowlerId": { "type": "string" },
+        "bowlerName": { "type": "string" },
+        "runsOffBat": { "type": "number" },
+        "extraRuns": { "type": "number" },
+        "isWicket": { "type": "boolean" },
+        "scorerId": { "type": "string" },
+        "timestamp": { "type": "number" }
+      }
+    }
+  }
+}

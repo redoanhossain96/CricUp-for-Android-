@@ -1,0 +1,6 @@
+{
+  "name": "CricUp",
+  "description": "CricUp — Complete Android Cricket Scoring, Management & Public Live Score Application with real-time ball-by-ball scoring, live spectator updates, squad & umpire management, and tournament records.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

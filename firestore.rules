@@ -1,0 +1,104 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // 1. MATCHES: /matches/{matchId}
+    // =========================================================================
+    match /matches/{matchId} {
+      // READ:
+      // যে কেউ (গেস্ট, যেকোনো ফোন, দর্শক) লাইভ ম্যাচ সার্চ করে বল-বাই-বল দেখতে পারবে
+      allow read: if true;
+
+      // CREATE / UPDATE:
+      // যেকোনো ফোন থেকে ম্যাচ তৈরি করা এবং স্কোর আপডেট ক্লাউডে সেভ হবে
+      allow create, update: if true;
+
+      // DELETE:
+      // ডিলিট করার জন্য অথেনটিকেশন প্রয়োজন
+      allow delete: if request.auth != null;
+
+      // =======================================================================
+      // 2. BALL EVENTS: /matches/{matchId}/ballEvents/{ballId}
+      // =======================================================================
+      match /ballEvents/{ballId} {
+        // লাইভ বল বাই বল দেখার ও স্কোর সিঙ্ক করার অনুমতি
+        allow read, write: if true;
+      }
+
+      // MATCH CORRECTIONS: /matches/{matchId}/corrections/{correctionId}
+      match /corrections/{correctionId} {
+        allow read, write: if true;
+      }
+
+      // SPECTATOR PREDICTIONS & VOTES: /matches/{matchId}/predictions/{predictionId}
+      match /predictions/{predictionId} {
+        allow read, write: if true;
+      }
+    }
+
+    // =========================================================================
+    // 3. USER ACCOUNTS & PROFILES: /users/{userId}
+    // =========================================================================
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // =========================================================================
+    // 4. OTP VERIFICATIONS: /otp_verifications/{hash}
+    // =========================================================================
+    // Direct client read and write access is strictly forbidden.
+    // Handled securely on the backend by Firebase Admin SDK.
+    match /otp_verifications/{hash} {
+      allow read, write: if false;
+    }
+
+    // =========================================================================
+    // 5. TEAMS, PLAYERS, TOURNAMENTS, UMPIRES, ETC.
+    // =========================================================================
+    match /teams/{teamId} {
+      allow read, write: if true;
+    }
+
+    match /players/{playerId} {
+      allow read, write: if true;
+    }
+
+    match /tournaments/{tournamentId} {
+      allow read, write: if true;
+    }
+
+    match /umpires/{umpireId} {
+      allow read, write: if true;
+    }
+
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /support_messages/{messageId} {
+      allow read, write: if true;
+    }
+
+    match /audit_logs/{logId} {
+      allow read, write: if true;
+    }
+
+    // =========================================================================
+    // 6. COMMUNITY MOMENTS, THOUGHTS, PHOTOS & VIDEOS: /posts/{postId}
+    // =========================================================================
+    match /posts/{postId} {
+      allow read, write: if true;
+
+      match /chunks/{chunkId} {
+        allow read, write: if true;
+      }
+    }
+
+    // Fallback rule for any other collection
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
